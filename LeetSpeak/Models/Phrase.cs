@@ -21,11 +21,10 @@ namespace LeetSpeak.Models
     {
       _phrase = phrase;
     }
-    //
+
     // public void Translate(string phrase)
     // {
     //   char[] phraseArray = phrase.ToCharArray();
-    //   if (phraseArray.Contains("")
     // }
   }
 }
