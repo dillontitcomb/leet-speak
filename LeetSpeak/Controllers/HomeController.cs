@@ -14,7 +14,14 @@ namespace LeetSpeak.Controllers
         [HttpPost("/leet-phrase")]
         public ActionResult Converted()
         {
-            Phrase newPhrase = new Phrase(Request.Form["phrase"]);
+            Phrase newPhrase = new Phrase();
+            newPhrase.SetPhrase(Request.Form["phrase"]);
+            newPhrase.ToArray();
+            char[] newArray = newPhrase.ToArray();
+            string finalString = string.Join("", newArray);
+            newPhrase.SetPhrase(finalString);
+
+
             return View(newPhrase);
         }
     }

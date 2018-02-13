@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LeetSpeak.Models
 {
@@ -7,12 +8,7 @@ namespace LeetSpeak.Models
   {
     private string _phrase;
 
-    public Phrase (string phrase)
-    {
-      _phrase = phrase;
-    }
-
-    public string GetPhrase()
+      public string GetPhrase()
     {
       return _phrase;
     }
@@ -22,9 +18,42 @@ namespace LeetSpeak.Models
       _phrase = phrase;
     }
 
-    // public void Translate(string phrase)
-    // {
-    //   char[] phraseArray = phrase.ToCharArray();
-    // }
+    public char[] ToArray()
+    {
+      char[] newArray = _phrase.ToCharArray();
+
+      for(int i = 0; i < newArray.Length;i++)
+      {
+        if(newArray[i]=='e' || newArray[i] == 'E')
+        {
+          newArray[i] = '3';
+        }
+        else if (newArray[i] == 'o' || newArray[i] == 'O')
+        {
+          newArray[i] = '0';
+        }
+        else if (newArray[i] == 'I')
+        {
+          newArray[i] = '1';
+        }
+        else if (newArray[i] == 't' || newArray[i] == 'T')
+        {
+          newArray[i] = '7';
+        }
+        else if (newArray[i] == 's' || newArray[i] == 'S')
+        {
+          if ( i ==  0 )
+          {
+            newArray[i] = 'S';
+          }
+
+          else
+          {
+            newArray[i] = 'z';
+          }
+        }
+      }
+      return newArray;
+    }
   }
 }
